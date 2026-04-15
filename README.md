@@ -1,5 +1,4 @@
-오늘 한 일: Pydantic 모델 + TODO CRUD API 구현
-막힌 점:
-해결 방법:
-배운 점: 요청/응답 검증, 상태코드 의미(201/204/404)
-내일 할 일: 파일 분리(schemas.py, routes.py) + 예외처리 개선
+In-memory -> SQLite 전환 이유
+SQLAlchemy ORM 기본 흐름 (add -> commit -> refresh)
+배운 점 3개
+내일 할 일: pytest로 CRUD API 테스트 작성
