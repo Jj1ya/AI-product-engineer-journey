@@ -31,3 +31,25 @@ def update_todo(payload: TodoUpdate, todo_id: int = Path(..., ge=1)):
 def delete_todo(todo_id: int = Path(..., ge=1)):
     todo_service.delete(todo_id)
     return
+
+
+
+
+
+
+
+from typing import Generator
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from app.db.database import SessionLocal
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+def create_todo(payload: TodoCreate, db: Session = Depends(get_db)):
+    return todo_service.create(db, payload)
