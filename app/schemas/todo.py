@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class TodoCreate(BaseModel):
@@ -15,21 +15,9 @@ class TodoUpdate(BaseModel):
 
 
 class TodoResponse(BaseModel):
-    id: int
-    title: str
-    description: Optional[str] = None
-    completed: bool
-
-
-
-
-from pydantic import BaseModel, ConfigDict
-
-class TodoResponse(BaseModel):
-    id: int
-    title: str
-    description: Optional[str] = None
-    completed: bool
-
     model_config = ConfigDict(from_attributes=True)
-    
+
+    id: int
+    title: str
+    description: Optional[str] = None
+    completed: bool

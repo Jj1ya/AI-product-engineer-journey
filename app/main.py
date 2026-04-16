@@ -1,8 +1,12 @@
+from app.db import models
+from app.db.database import Base, engine
 from fastapi import FastAPI
 
 from app.api.todo import router as todo_router
 
-app = FastAPI(title="AI Product Engineer Day3 TODO API")
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(title="AI Product Engineer Day4 TODO API")
 
 
 @app.get("/")
@@ -16,9 +20,3 @@ def health_check():
 
 
 app.include_router(todo_router)
-
-from app.db.database import engine, Base
-from app.db import models
-
-models
-Base.metadata.create_all(bind=engine)
