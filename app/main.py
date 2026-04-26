@@ -1,3 +1,4 @@
+from app.config import settings
 from app.db import models
 from app.db.database import Base, engine
 from fastapi import FastAPI
@@ -6,7 +7,7 @@ from app.api.todo import router as todo_router
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="AI Product Engineer Day4 TODO API")
+app = FastAPI(title=settings.app_name)
 
 
 @app.get("/")
